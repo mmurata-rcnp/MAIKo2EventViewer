@@ -1,10 +1,7 @@
 import React, { useState } from 'react'
-// import SignalCanvas from "./SignalCanvas";
-// import TrackCanvas from "./TrackCanvas";
 import TrackCanvasWithButtons from './TrackCanvasWithButtons';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper'
-// import Container from '@mui/material/Container'
 import { CssBaseline, Typography } from '@mui/material';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -46,13 +43,6 @@ const cathodeDefaultColor = signalColors.find((element) => (element.name === "pi
 
 function Visualizer({ anodeHit, cathodeHit, anodeFADC, cathodeFADC, canvasDisabled = false }) {
 
-    // let aHit = props.event.AnodeHit != null ? props.event.AnodeHit : new Array()
-    // let cHit = props.event.CathodeHit != null ? props.event.CathodeHit : new Array()
-    // console.log(aHit)
-    // console.log(cathodeFADC)
-    // console.log(anodeFADC)
-    // const arrTmp = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
     const [signalDrawn, setSignalDrawn] = useState([])
 
 
@@ -75,7 +65,6 @@ function Visualizer({ anodeHit, cathodeHit, anodeFADC, cathodeFADC, canvasDisabl
         }
     }
 
-    // let signalInfo = signalList.find(elemSig => (elemSig.name === "C-1"))
     const makeSignalColors = () => {
         return (signalDrawn.map((elem) => {
             let signalInfo = signalList.find((elemSig) => (elemSig.name === elem.name))
@@ -85,7 +74,6 @@ function Visualizer({ anodeHit, cathodeHit, anodeFADC, cathodeFADC, canvasDisabl
         }
         ));
     }
-    // console.log(makeSignalColors())
 
     const handleDelete = (chipToDelete) => () => {
         setSignalDrawn((signals) => signals.filter((signal) => signal.name !== chipToDelete.name));
@@ -98,7 +86,6 @@ function Visualizer({ anodeHit, cathodeHit, anodeFADC, cathodeFADC, canvasDisabl
             <Box
                 sx={{
                     display: 'flex',
-                    // flexWrap: 'wrap',
                     '& > :not(style)': {
                         m: 1,
                     },
@@ -273,7 +260,6 @@ function Visualizer({ anodeHit, cathodeHit, anodeFADC, cathodeFADC, canvasDisabl
                             m: 1,
                             p: 1,
                             flexGrow: 1,
-                            // height: 0,
                             justifyContent: 'center',
                             alignItems: 'center',
                         }}
@@ -342,59 +328,7 @@ function Visualizer({ anodeHit, cathodeHit, anodeFADC, cathodeFADC, canvasDisabl
                         </Button>
                     </Box>
                 </Paper>
-                {/* <Paper elevation={3}
-                        sx={{
-                            display: 'flex',
-                            m: 1,
-                            p: 1,
-                        }}>
-                        < SignalCanvas
-                            id={"cathode-" + 1} width={600} height={100} title={"cathode-" + 1}
-                            xmin={0} xmax={1024} ymin={0} ymax={1024}
-                            xtitle={"Time [FADC clock]"} ytitle={"FADC [ch]"}
-                            signals={cathodeFADC[1] ? cathodeFADC[1] : []}
-                            color="red"
-                        />
-                    </Paper> */}
             </Box>
-
-            {/* {[...Array(24)].map((_, index) => {
-                console.log(index);
-                return (
-                    < SignalCanvas
-                        id={"cathode-" + index} width={100} height={100} title={"cathode-" + index}
-                        xmin={0} xmax={1024} ymin={0} ymax={1024}
-                        xtitle={"Time [FADC clock]"} ytitle={"FADC [ch]"}
-                        signals={cathodeFADC[index] ? cathodeFADC[index] : []}
-                        color="red"
-                    />)
-            })}
-            {[...Array(24)].map((_, index) => {
-                console.log(index);
-                return (
-                    < SignalCanvas
-                        id={"anode-" + index} width={100} height={100} title={"anode-" + index}
-                        xmin={0} xmax={1024} ymin={0} ymax={1024}
-                        xtitle={"Time [FADC clock]"} ytitle={"FADC [ch]"}
-                        signals={anodeFADC[index] ? anodeFADC[index] : []}
-                        color="blue"
-                    />)
-            })} */}
-
-            {/* < SignalCanvas
-                id={"cathode-" + 1} width={100} height={100} title={"cathode-" + 1}
-                xmin={0} xmax={1024} ymin={0} ymax={1024}
-                xtitle={"Time [FADC clock]"} ytitle={"FADC [ch]"}
-                signals={cathodeFADC[1] ? cathodeFADC[1] : []}
-                color="blue"
-            />
-            <SignalCanvas
-                id={"cathode-0"} width={100} height={100} title={"cathode-0"}
-                xmin={0} xmax={1024} ymin={0} ymax={1024}
-                xtitle={"Time [FADC clock]"} ytitle={"FADC [ch]"}
-                signals={cathodeFADC[0] ? cathodeFADC[0] : []}
-                color="blue"
-            /> */}
         </React.Fragment >
     )
 }

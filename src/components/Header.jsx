@@ -3,7 +3,6 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-// import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import DownloadIcon from '@mui/icons-material/Download'
 import UpdateIcon from '@mui/icons-material/Update';
@@ -23,8 +22,6 @@ const options = [
     { name: "2.0 /s", interval: 500 }
 ];
 
-
-
 export default function Header({ onSelectInterval = f => f, currentInterval = 1000, playing, handleExportData = f => f, updateEventList = f => f, onGoToFirst = f => f, onGoToLast = f => f }) {
 
     const [anchorEl, setAnchorEl] = useState(null);
@@ -41,17 +38,12 @@ export default function Header({ onSelectInterval = f => f, currentInterval = 10
 
     const onFileInputChange = (event) => {
         const file = event.target.files[0]
-        // inputRef.file = event.target.files[0]
-        // console.log(file);
         setEventList({ ...eventList, fileName: file.name })
         const reader = new FileReader()
         reader.onload = () => {
-            // console.log(reader.result)
             let replaced = reader.result.replace(/[^0-9]/g, ' ').split(' ').filter((val) => (val.length > 0)).map((val) => (Number(val)))
             let unique = Array.from(new Set(replaced))
             let sorted = [...unique].sort((a, b) => (a - b))
-            // console.log(replaced)
-            // console.log(sorted)
             if (sorted.length > 0) {
                 setEventList({ ...eventList, fileName: file.name, good: true })
                 updateEventList(sorted)
@@ -75,23 +67,10 @@ export default function Header({ onSelectInterval = f => f, currentInterval = 10
         inputRef.current.value = ""
     }
 
-
-
-
-    // console.log("interval " + currentInterval)
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="sticky">
                 <Toolbar>
-                    {/* <IconButton
-                        size="large"
-                        edge="start"
-                        color="inherit"
-                        aria-label="menu"
-                        sx={{ mr: 2 }}
-                    >
-                        <MenuIcon />
-                    </IconButton> */}
                     <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
                         MAIKo+ event viewer
                     </Typography>
@@ -107,7 +86,6 @@ export default function Header({ onSelectInterval = f => f, currentInterval = 10
                         }}
 
                     >
-                        {/* <Button color="inherit">Login</Button> */}
                         {
                             (() => {
                                 if (eventList.fileName.length > 0)
@@ -252,12 +230,6 @@ export default function Header({ onSelectInterval = f => f, currentInterval = 10
                         anchorEl={anchorEl}
                         open={open}
                         onClose={handleClose}
-                    // PaperProps={{
-                    //     style: {
-                    //         maxHeight: ITEM_HEIGHT * 4.5,
-                    //         width: '20ch',
-                    //     },
-                    // }}
                     >
                         {options.map((option, i) => (
                             <MenuItem
@@ -275,9 +247,6 @@ export default function Header({ onSelectInterval = f => f, currentInterval = 10
                             </MenuItem>
                         ))}
                     </Menu>
-                    {/* <Typography>
-                        a
-                    </Typography> */}
                 </Toolbar>
             </AppBar>
         </Box>

@@ -31,18 +31,9 @@ export default function MultiSignalCanvas({ width, height, title, xmin, xmax, ym
                 x={0}
                 y={0}
                 fill="#ffffff"
-            // stroke="black"
             />
         </Layer>
         <Layer>
-            {/* <Rect
-                width={width}
-                height={height}
-                x={0}
-                y={0}
-                fill="#ffffff"
-                stroke="black"
-            /> */}
             {(() => {
                 if (disabled) {
                     return (<Rect
@@ -111,37 +102,6 @@ export default function MultiSignalCanvas({ width, height, title, xmin, xmax, ym
                 align={"right"}
                 rotation={270}
             />
-            {/* <Rect
-                width={10}
-                height={10}
-                x={mapX(xmin) - 10 / 2}
-                y={mapY(ymin) - 10 / 2}
-                fill="#ff0000"
-            />
-            <Rect
-                width={10}
-                height={10}
-                x={mapX(xmin)}
-                y={mapY(ymax)}
-                fill="#00ff00"
-            />
-
-            <Rect
-                width={10}
-                height={10}
-                x={mapX(xmax)}
-                y={mapY(ymax)}
-                fill="#0000ff"
-            />
-
-            <Rect
-                width={10}
-                height={10}
-                x={mapX(xmax)}
-                y={mapY(ymin)}
-                fill="#000000"
-            /> */}
-
         </Layer>
         <Layer>
             {(
