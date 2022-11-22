@@ -233,6 +233,8 @@ const App = () => {
         updateEventList={updateEventList}
         onGoToFirst={goToFirstEvent}
         onGoToLast={goToLastEvent}
+        currentList={eventList}
+        currentEventNumber={eventID.event_number}
       ></Header>
       <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
         Run {eventID.run_id}, Event {eventID.event_number}

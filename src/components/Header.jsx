@@ -22,7 +22,7 @@ const options = [
     { name: "2.0 /s", interval: 500 }
 ];
 
-export default function Header({ onSelectInterval = f => f, currentInterval = 1000, playing, handleExportData = f => f, updateEventList = f => f, onGoToFirst = f => f, onGoToLast = f => f }) {
+export default function Header({ onSelectInterval = f => f, currentInterval = 1000, playing, handleExportData = f => f, updateEventList = f => f, onGoToFirst = f => f, onGoToLast = f => f, currentList = [], currentEventNumber = 1 }) {
 
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -149,6 +149,21 @@ export default function Header({ onSelectInterval = f => f, currentInterval = 10
                                                 >
                                                     <ClearIcon />
                                                 </IconButton>
+                                            </ToolTip>
+                                            <ToolTip title="Current position">
+                                                <Box
+                                                    sx={{
+                                                        mx: 0.5,
+                                                        px: 0.5,
+                                                    }}
+                                                >
+                                                    <Typography variant="h7" component="div" sx={{ flexGrow: 1 }}
+                                                        color={eventList.good ? "#ffffff" : "#9e9e9e"}
+                                                        fontWeight="Bold"
+                                                    >
+                                                        {String(currentList.includes(currentEventNumber) ? currentList.findIndex((id) => (id === currentEventNumber)) + 1 : "-") + "/" + String(currentList.length)}
+                                                    </Typography>
+                                                </Box>
                                             </ToolTip>
                                             <ToolTip title="Go to first">
                                                 <IconButton
