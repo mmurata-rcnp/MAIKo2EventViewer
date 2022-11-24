@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# MAIKo+ event viewer app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This is an event viewer application runs on web browsers.\
+You can check hit patterns and shapes of signals of every events acquired with MAIKo+ by accessing this app. 
 
-In the project directory, you can run:
+## Preparation
 
-### `npm start`
+- Start JSON API server (MAIKo2_JSON_API)  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+    - Index tables on PostgresSQL are also required. 
+    - See details in README.md of MAIKo2_JSON_API repository.
+    - In descriptions below, `the API server is assumed to be running on the localhost:3000.`
+- Prepare two environment variables in ".env" files at the top level of this source.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+    1. REACT_APP_API_URI_PREFIX\
+        The part of URI before the parameters (run id, event number) input for the JSON API.\
+        This value is required for accessing the API server in App.js.\
+        For running this app on development server (i.e. npm start), the part of URI after port number is enough for the purpose because of "proxy" setting in package.json.
+    
+    2. PUBLIC_URL\
+        The URL for this app. \
+        This value is used in index.html.
+        This is required only for production build.
 
-### `npm test`
+    - Examples (in the case API server and this app is running on the server named cogito)
+        - .env.production
+        ```
+        REACT_APP_API_URI_PREFIX="http://cogito:8080/get/"
+        PUBLIC_URL=http://cogito:3000
+        ```
+         - .env.development
+        ```
+        REACT_APP_API_URI_PREFIX="/get/"
+        ```
+- Start (production) server 
+    1. Build this code `$ npm run build`. 
+    2. Start the application server `$ serve -s build`.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Start development server [optional]
+    1. Start server `$ npm start`
 
-### `npm run build`
+## Usage
+Access via port 3000 of the server on which the app runs with web browsers.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Functions
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Visualizing event data
+    - Timing and hit patterns on the anode and cathode planes
+    - Signals on the anode and cathode recorded with FADCs
+- Accessing arbitrary event
+    - Adjacent runs and events
+    - User-specified run and event number
+- Automatic event transitions
+    - Variable speed (0.5, 1, 2, events/sec)
+    - User-specified list of event numbers
+- Downloading event data in JSON format
