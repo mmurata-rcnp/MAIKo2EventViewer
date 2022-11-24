@@ -12,6 +12,7 @@ You can check hit patterns and shapes of signals of every events acquired with M
     - Index tables on PostgresSQL are also required. 
     - See details in README.md of MAIKo2_JSON_API repository.
     - In descriptions below, `the API server is assumed to be running on the localhost:8080.`
+    
 - Prepare two environment variables in ".env" files at the top level of this source.
 
     1. REACT_APP_API_URI_PREFIX\
@@ -34,16 +35,33 @@ You can check hit patterns and shapes of signals of every events acquired with M
         ```
         REACT_APP_API_URI_PREFIX="/get/"
         ```
+
+- Update to latest version of Node.js 
+    ```
+    $ sudo install npm install -g n
+    $ n stable
+    $ hash -r
+    ```
+
+- Install Node.js modules required
+    ```
+    $ npm install
+    $ sudo npm install -g serve
+    ```
+
 - Start (production) server 
     1. Build this code `$ npm run build`. 
     2. Start the application server `$ serve -s build`.
 
 - Start development server [optional]
+    - This option is `ONLY for test purpose`. 
+    - By doing this option, development server starts instead of production server.
     1. Start server `$ npm start`
+    
 
 ## Usage
 Access via port 3000 of the server on which the app runs with web browsers.
-
+- If this program runs on development server, you must specify the server in IP address.
 
 ## Functions
 
