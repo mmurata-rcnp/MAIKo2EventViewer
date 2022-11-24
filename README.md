@@ -11,7 +11,7 @@ You can check hit patterns and shapes of signals of every events acquired with M
 
     - Index tables on PostgresSQL are also required. 
     - See details in README.md of MAIKo2_JSON_API repository.
-    - In descriptions below, `the API server is assumed to be running on the localhost:3000.`
+    - In descriptions below, `the API server is assumed to be running on the localhost:8080.`
 - Prepare two environment variables in ".env" files at the top level of this source.
 
     1. REACT_APP_API_URI_PREFIX\
