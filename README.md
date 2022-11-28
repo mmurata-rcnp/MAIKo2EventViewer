@@ -9,7 +9,7 @@ You can check hit patterns and shapes of signals of every events acquired with M
 
 - Start JSON API server (MAIKo2_JSON_API)  
 
-    - Index tables on PostgresSQL are also required. 
+    - Index tables on PostgreSQL are also required. 
     - See details in README.md of MAIKo2_JSON_API repository.
     - In descriptions below, `the API server is assumed to be running on the localhost:8080.`
     
